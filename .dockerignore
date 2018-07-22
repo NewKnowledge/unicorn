@@ -1,0 +1,11 @@
+__pycache__/*
+
+.vscode
+lib
+venv
+
+.gitignore
+Dockerfile
+*.dockerfile
+Jenkinsfile
+*.env
