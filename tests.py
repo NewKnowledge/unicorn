@@ -9,8 +9,11 @@ def test_nothing():
 
 
 # TODO write tests
-# def test_unicorn():
-#     unicorn = Unicorn()
+def test_unicorn():
+    # ImagenetModel
+    logging.info('creating unicorn')
+    unicorn = Unicorn()
+    logging.info('success creating unicorn')
 #     from glob import glob
 #     image_paths = glob('images/*.jpg')
 #     print('image paths to cluster:', image_paths)
