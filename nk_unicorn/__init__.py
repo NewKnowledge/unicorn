@@ -1,5 +1,4 @@
-from .unicorn import Unicorn, ImagenetModel
-from .image_utils import load_image_url
+from .unicorn import Unicorn
 
 __version__ = '1.0.0'
 

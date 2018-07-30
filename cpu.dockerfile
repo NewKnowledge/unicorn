@@ -25,9 +25,9 @@ RUN \
     pip install --no-deps -e git+https://github.com/NewKnowledge/imagenet.git@dev#egg=nk_imagenet
 
 # force dockerfile to download imagenet weights (.h5) into the image to avoid download on spin-up or first use
-# RUN python -c "from keras.applications.xception import Xception; Xception(weights='imagenet', include_top=False)"
+RUN python -c "from keras.applications.xception import Xception; Xception(weights='imagenet', include_top=False)"
 
 COPY . $HOME/
 RUN pip install --no-deps -e .
 
-# CMD ["pytest", "--color=yes", "-s", "tests.py"]
+CMD ["pytest", "--color=yes", "-s", "tests.py"]

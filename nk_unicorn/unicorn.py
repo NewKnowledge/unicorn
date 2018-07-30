@@ -20,7 +20,6 @@ CLUSTER_CONFIGS = {
     'kmeans': dict(alg=KMeans, kwargs=dict(n_clusters=8)),
     'dbscan': dict(alg=DBSCAN, kwargs=dict(eps=35, min_samples=1)),
     'agglomerative': dict(alg=AgglomerativeClustering, kwargs=dict(n_clusters=8)),
-    # sklearn.cluster.AgglomerativeClustering(n_clusters=2, affinity=’euclidean’, memory=None, connectivity=None, compute_full_tree=’auto’, linkage=’ward’, pooling_func=<function mean>)
 }
 
 
