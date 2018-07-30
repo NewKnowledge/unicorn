@@ -6,7 +6,9 @@ networks:
 services:
 
   unicorn:
-    build: .
+    build: 
+      dockerfile: cpu.dockerfile
+      context: .
     environment:
       - IMAGE_LIMIT=4000
     networks:
