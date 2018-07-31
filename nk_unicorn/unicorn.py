@@ -9,6 +9,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.random_projection import GaussianRandomProjection
 from sklearn.manifold import TSNE
 
+import spikesort_tsne
+# from spikesorting_tsne import preprocessing_kilosort_results as preproc
+# from spikesorting_tsne.tsne import t_sne as spikesort_tsne
+# from spikesorting_tsne import io_with_cpp as io
+# from spikesorting_tsne import spike_positioning_on_probe as pos
+
 
 DIM_RED_CONFIGS = {
     'pca': dict(alg=PCA, kwargs=dict(n_components=8, copy=False, svd_solver='randomized')),

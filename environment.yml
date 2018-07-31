@@ -1,12 +1,19 @@
 name: base            
+channels:
+- defaults
+- conda-forge
+- georgedimitriadis
 dependencies:
+- spikesorting_tsne
+- fastcluster
+- anaconda-client
 - python=3.6
 - Pillow
 - requests
 - pytest
 - numpy
 - cython
-- Keras
 - scikit-learn
+- Keras
 - pip:                
   - cachetools
