@@ -2,31 +2,10 @@
 
 import logging
 
-from sklearn.cluster import DBSCAN, KMeans, AgglomerativeClustering
-from sklearn.decomposition import PCA
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
-from sklearn.random_projection import GaussianRandomProjection
-from sklearn.manifold import TSNE
-
-import spikesort_tsne
-# from spikesorting_tsne import preprocessing_kilosort_results as preproc
-# from spikesorting_tsne.tsne import t_sne as spikesort_tsne
-# from spikesorting_tsne import io_with_cpp as io
-# from spikesorting_tsne import spike_positioning_on_probe as pos
-
-
-DIM_RED_CONFIGS = {
-    'pca': dict(alg=PCA, kwargs=dict(n_components=8, copy=False, svd_solver='randomized')),
-    'rand-proj': dict(alg=GaussianRandomProjection, kwargs=dict(eps=0.1)),
-    'tsne': dict(alg=TSNE, kwargs=dict(n_components=8, perplexity=30.0)),
-}
-
-CLUSTER_CONFIGS = {
-    'kmeans': dict(alg=KMeans, kwargs=dict(n_clusters=8)),
-    'dbscan': dict(alg=DBSCAN, kwargs=dict(eps=35, min_samples=1)),
-    'agglomerative': dict(alg=AgglomerativeClustering, kwargs=dict(n_clusters=8)),
-}
+from dim_reduction import DIM_REDUC_CONFIGS
+from clustering import CLUSTER_CONFIGS
 
 
 class Unicorn:
@@ -42,7 +21,7 @@ class Unicorn:
         self.standard_scaler = StandardScaler(copy=False)
 
         # init dimensionality reduction algorithm, overwriting default ALG_CONFIGS values with given kwargs
-        dred_conf = DIM_RED_CONFIGS[dim_reduc_config]
+        dred_conf = DIM_REDUC_CONFIGS[dim_reduc_config]
         dred_conf['kwargs'].update(dim_reduc_kwargs)
         self.dim_reduction_alg = dred_conf['alg'](**dred_conf['kwargs'])
 

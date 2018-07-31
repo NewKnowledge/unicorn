@@ -1,3 +1,10 @@
+import spikesort_tsne
+from sklearn.preprocessing import StandardScaler
+from sklearn.random_projection import GaussianRandomProjection
+from sklearn.manifold import TSNE
+from sklearn.decomposition import PCA
+
+
 class SpikesortTSNE:
     def __init__(self,
                  n_components=2,
@@ -23,3 +30,11 @@ class SpikesortTSNE:
         return spikesort_tsne.tsne.t_sne(samples=data,
                                          num_dims=self.n_components,
                                          **self.tsne_kwargs)
+
+
+DIM_REDUC_CONFIGS = {
+    'pca': dict(alg=PCA, kwargs=dict(n_components=8, copy=False, svd_solver='randomized')),
+    'rand-proj': dict(alg=GaussianRandomProjection, kwargs=dict(eps=0.1)),
+    'tsne': dict(alg=TSNE, kwargs=dict(n_components=8, perplexity=30.0)),
+    'spikesort-tsne': dict(alg=SpikesortTSNE, kwargs=dict(n_components=8)),
+}
