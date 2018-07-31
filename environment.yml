@@ -1,10 +1,10 @@
-name: cluster            
+name: base            
 channels:
 - defaults
 - conda-forge
 - georgedimitriadis
 dependencies:
-# - anaconda-client
+- anaconda-client
 - spikesorting_tsne
 - fastcluster
 - hdbscan
