@@ -11,9 +11,9 @@ from clustering import CLUSTER_CONFIGS
 class Unicorn:
 
     def __init__(self,
-                 dim_reduc_config='pca',
+                 dim_reduc_config='spikesort-tsne',
                  dim_reduc_kwargs={},
-                 cluster_config='dbscan',
+                 cluster_config='hdbscan',
                  cluster_kwargs={},
                  ):
 
