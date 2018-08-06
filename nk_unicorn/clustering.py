@@ -6,11 +6,11 @@ import hdbscan
 class HDBSCAN:
 
     def __init__(self, min_cluster_size=15, min_samples = 1, hdbscan_kwargs=None):
-        self.hdbscan_kwargs = dict(cluster_selection_method='leaf', memory='hdbscan-cache', prediction_data=True)
+        self.hdbscan_kwargs = dict(cluster_selection_method='eom', prediction_data=False)
         if hdbscan_kwargs:
             self.hdbscan_kwargs.update(hdbscan_kwargs)
 
-        self.hdbscan = hdbscan.HDBSCAN(min_cluster_size=min_cluster_size, **self.hdbscan_kwargs)
+        self.hdbscan = hdbscan.HDBSCAN(min_cluster_size=min_cluster_size, min_samples=min_samples, **self.hdbscan_kwargs)
 
     def fit_predict(self, data):
         return self.hdbscan.fit_predict(data)
@@ -34,12 +34,12 @@ class FastAgglomerative:
         cut = self.cut
         while curr_max_label < cluster_count:
             cut = cut * 0.9
-            labels = clustering.cut(cut)
+            labels = self.cluster.cut(cut)
             curr_max_label = max(labels)
 
         while curr_max_label > cluster_count:
             cut = cut * 1.05
-            labels = clustering.cut(cut)
+            labels = self.cluster.cut(cut)
             curr_max_label = max(labels)
 
         return labels

@@ -12,13 +12,12 @@ class SpikesortTSNE:
 
         # set default params for tsne alg
         self.tsne_kwargs = dict(
-            theta = 0.3
-            eta = 400.0
-            num_dims = 3
-            perplexity = 25
-            iterations = 1500
-            random_seed = 1
-            verbose = 2
+            theta = 0.3,
+            eta = 400.0,
+            perplexity = 25,
+            iterations = 1500,
+            random_seed = 1,
+            verbose = 2,
             files_dir='tsne',
         )
         # overwrite defaults with provided values
@@ -34,5 +33,5 @@ class SpikesortTSNE:
 DIM_REDUC_CONFIGS = {
     'pca': dict(alg=PCA, kwargs=dict(n_components=8, copy=False, svd_solver='randomized')),
     'rand-proj': dict(alg=GaussianRandomProjection, kwargs=dict(eps=0.1)),
-    'spikesort-tsne': dict(alg=SpikesortTSNE, kwargs=dict(n_components=3,)),
+    'spikesort-tsne': dict(alg=SpikesortTSNE, kwargs=dict(n_components=3)),
 }
