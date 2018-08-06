@@ -4,16 +4,18 @@ import logging
 
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
-from dim_reduction import DIM_REDUC_CONFIGS
-from clustering import CLUSTER_CONFIGS
+
+from .dim_reduction import DIM_REDUC_CONFIGS
+
+from .clustering import CLUSTER_CONFIGS
 
 
 class Unicorn:
 
     def __init__(self,
-                 dim_reduc_config='pca',
+                 dim_reduc_config='spikesort-tsne',
                  dim_reduc_kwargs={},
-                 cluster_config='dbscan',
+                 cluster_config='hdbscan',
                  cluster_kwargs={},
                  ):
 
@@ -39,6 +41,8 @@ class Unicorn:
 
     def cluster(self, data, reduce_dim=True):
         data = self.reduce_dimension(data) if reduce_dim else self.scale(data)
+        print(data.shape)
+        print(data.dtype)
         return self.cluster_alg.fit_predict(data)
 
     def get_nearest_neighbors(self, data, n_neighbors=16, reduce_dim=True):
