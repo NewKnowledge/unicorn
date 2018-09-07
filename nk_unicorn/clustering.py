@@ -48,6 +48,6 @@ class FastAgglomerative:
 CLUSTER_CONFIGS = {
     'kmeans': dict(alg=KMeans, kwargs=dict(n_clusters=8)),
     'dbscan': dict(alg=DBSCAN, kwargs=dict(eps=35, min_samples=1)),
-    'hdbscan': dict(alg=HDBSCAN, kwargs=dict(min_cluster_size=15, min_samples = 1)),
+    'hdbscan': dict(alg=HDBSCAN, kwargs=dict(min_cluster_size=10, min_samples = 1)),
     'agglomerative': dict(alg=FastAgglomerative, kwargs=dict(n_clusters=150, cut = 100.0)),
 }
