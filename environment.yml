@@ -1,4 +1,4 @@
-name: base            
+name: base
 channels:
 - defaults
 - conda-forge
@@ -6,15 +6,11 @@ channels:
 dependencies:
 - anaconda-client
 - spikesorting_tsne
-- fastcluster
 - hdbscan
 - python=3.6
-- Pillow
 - requests
 - pytest
 - numpy
-- cython
 - scikit-learn
-- Keras
-- pip:                
+- pip:
   - cachetools

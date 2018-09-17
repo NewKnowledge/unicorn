@@ -6,7 +6,6 @@ from nk_imagenet import ImagenetModel
 
 
 def test_unicorn():
-    model = ImagenetModel()
     logging.info('creating unicorn')
     unicorn = Unicorn()
     logging.info('success creating unicorn')

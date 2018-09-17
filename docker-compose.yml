@@ -6,13 +6,12 @@ networks:
 services:
 
   unicorn:
-    build: 
+    build:
       dockerfile: cpu.dockerfile
       context: .
     environment:
-      - IMAGE_LIMIT=4000
+      - IMAGE_LIMIT=100000
     networks:
       - backend
     volumes:
       - .:/app
-
