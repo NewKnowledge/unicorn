@@ -1,9 +1,10 @@
 FROM python:3.6-slim
 
-ENV HOME=/app 
+ENV HOME=/app
 
 WORKDIR $HOME
 
+RUN apt-get update && apt-get install -y git
 COPY requirements.txt $HOME/
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt

@@ -7,7 +7,7 @@ from keras.applications import inception_v3
 from sklearn.cluster import DBSCAN
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-import logging
+from logger import logger
 
 from .image_utils import image_array_from_path, image_array_from_url
 
@@ -32,13 +32,13 @@ class ImagenetModel:
         ''' takes a list of image urls and returns the features resulting from applying the imagenet model to 
         successfully downloaded images along with the urls that were successful.
         '''
-        logging.info(f'getting {len(image_urls)} images from urls')
+        logger.info(f'getting {len(image_urls)} images from urls')
         images_array = [image_array_from_url(url, target_size=self.target_size) for url in image_urls]
         # filter out unsuccessful image urls which output None in the list of
         url_to_image = {url: img for url, img in zip(image_urls, images_array) if img is not None}
         images_array = np.array(list(url_to_image.values()))
 
-        logging.info(f'getting features from image arrays')
+        logger.info(f'getting features from image arrays')
         features = self.get_features(images_array, n_channels=n_channels)
         return features, list(url_to_image.keys())
 
@@ -47,12 +47,12 @@ class ImagenetModel:
         # NOTE we want to do preprocessing and predicting in batches whenever possible
         if images_array.ndim != 4:
             raise Exception('invalid input shape for images_array, expects a 4d array')
-        logging.info(f'preprocessing images')
+        logger.info(f'preprocessing images')
         images_array = self.preprocess(images_array)
-        logging.info(f'computing image features')
+        logger.info(f'computing image features')
         image_features = self.model.predict(images_array)
         if n_channels:
-            logging.info(f'truncated to first {n_channels} channels')
+            logger.info(f'truncated to first {n_channels} channels')
             # if n_channels is specified, only keep that number of channels
             image_features = image_features[:, :, :, :n_channels]
 
