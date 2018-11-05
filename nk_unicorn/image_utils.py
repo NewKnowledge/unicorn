@@ -7,7 +7,7 @@ import requests
 from cachetools.func import ttl_cache
 from keras.preprocessing.image import img_to_array, load_img
 from PIL import Image
-from logger import logger
+from nk_logger import logger
 
 # NOTE caching allows us to reuse computed image arrays for urls or filepaths
 CACHE_TTL = os.getenv('CACHE_TTL', 3600)

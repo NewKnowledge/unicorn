@@ -7,7 +7,7 @@ from keras.applications import inception_v3
 from sklearn.cluster import DBSCAN
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-from logger import logger
+from nk_logger import logger
 
 from .image_utils import image_array_from_path, image_array_from_url
 
