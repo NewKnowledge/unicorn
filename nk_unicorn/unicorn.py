@@ -7,10 +7,11 @@ from keras.applications import inception_v3
 from sklearn.cluster import DBSCAN
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
-from nk_loggernk_logger import logger
+from .get_logger import get_logger
 
 from .image_utils import image_array_from_path, image_array_from_url
 
+logger = get_logger(__name__)
 
 class ImagenetModel:
 
