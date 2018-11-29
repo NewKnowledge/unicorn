@@ -6,13 +6,9 @@ networks:
 services:
 
   unicorn:
-    build: 
-      dockerfile: cpu.dockerfile
-      context: .
-    environment:
-      - IMAGE_LIMIT=4000
+    build: .
+    command: python tests.py
     networks:
       - backend
     volumes:
       - .:/app
-
