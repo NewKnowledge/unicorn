@@ -7,4 +7,5 @@ pytest >= 3.6.2
 requests >= 2.18.4
 scikit-learn >= 0.19.1
 tensorflow >= 1.8.0
-git+https://github.com/NewKnowledge/imagenet.git@dev#egg=nk_imagenet
+git+https://github.com/NewKnowledge/imagenet.git@master#egg=nk_imagenet
+git+https://github.com/NewKnowledge/nk-logger.git@master#egg=nk_logger
