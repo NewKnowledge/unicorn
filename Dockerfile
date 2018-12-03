@@ -1,6 +1,6 @@
 FROM python:3.6-slim
 
-ENV HOME=/app
+ENV HOME=/root
 
 WORKDIR $HOME
 

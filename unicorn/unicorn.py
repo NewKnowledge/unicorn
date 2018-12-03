@@ -14,7 +14,7 @@ class Unicorn:
         self,
         dim_reduc_alg="pca",
         dim_reduc_kwargs={},
-        cluster_alg="dbscan",
+        cluster_alg="kmeans",
         cluster_kwargs={},
     ):
         # initialize preprocessing and clustering classes

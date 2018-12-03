@@ -7,8 +7,8 @@ services:
 
   unicorn:
     build: .
-    command: python tests.py
+    # command: python tests.py
     networks:
       - backend
     volumes:
-      - .:/app
+      - .:/root
