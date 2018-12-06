@@ -7,10 +7,8 @@ services:
 
   unicorn:
     build: .
-    environment:
-      - IMAGE_LIMIT=4000
+    # command: python tests.py
     networks:
       - backend
     volumes:
-      - .:/app
-
+      - .:/root

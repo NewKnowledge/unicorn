@@ -1,21 +1,34 @@
-import logging
+from unicorn import Unicorn
+from logging import Formatter
+from nk_logger import get_logger, config_logger
+import numpy as np
 
-from nk_unicorn import ImagenetModel, Unicorn
+config_logger(prefix="unicorn", root_log_level="ERROR", formatter=Formatter())
+logger = get_logger(__name__)
+
+dim = 100
+n_samples = 1000
+data = np.random.randn(n_samples, dim)
 
 
-def test_nothing():
-    logging.warning('tests are not implemented, this is a no-op placeholder')
-    assert True
+def test_basic():
+    unicorn = Unicorn()
+    res = unicorn.cluster(data)
+    assert isinstance(res, np.ndarray)
+    assert res.shape == (n_samples,)
+    assert isinstance(res[0], (np.int32, np.int64))
 
 
-# TODO write tests
-# def test_unicorn():
-#     unicorn = Unicorn()
-#     from glob import glob
-#     image_paths = glob('images/*.jpg')
-#     print('image paths to cluster:', image_paths)
-#     image_net = ImagenetModel()
-#     dat = image_net.get_features_from_paths(image_paths)
-#     print('shape of array data to cluster:', dat.shape)
-#     clusters = unicorn.cluster(dat)
-#     print('clusters:', clusters)
+def test_algs():
+    unicorn = Unicorn(dim_reduc_alg="umap", cluster_alg="hdbscan")
+    res = unicorn.cluster(data)
+    assert isinstance(res, np.ndarray)
+    assert res.shape == (n_samples,)
+    assert isinstance(res[0], (np.int32, np.int64))
+
+
+# TODO add tests for algs other than defaults
+
+
+if __name__ == "__main__":
+    test_basic()
